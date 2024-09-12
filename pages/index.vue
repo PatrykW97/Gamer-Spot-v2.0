@@ -1,20 +1,18 @@
 <script lang="ts" setup>
-
-const data = ref(null)
-const message = ref("")
+const data = ref(null);
+const message = ref("");
 
 onMounted(async () => {
   try {
-    data.value = await $fetch('http://130.61.148.159:80/post')
+    data.value = await $fetch("http://130.61.148.159:80/post");
   } catch (e) {
-    console.error('Fetch error:', e)
+    console.error("Fetch error:", e);
   }
-  console.log(data.value)
+  console.log(data.value);
+});
+useSeoMeta({
+  title: 'GamerSpot - Strona Główna'
 })
-
-
-
-
 </script>
 
 <template>

@@ -11,7 +11,7 @@ let { post } = props;
 
 const toggleEditPost = ref(false)
 const newComment = ref({
-  authorId:"",
+  authorId:"93021532",
   postId:post?.id,
   message:""
 })
@@ -45,19 +45,17 @@ async function createComment(){
   try{
       const response = await $fetch('http://130.61.148.159:80/comment',{
         method:"POST",
-        body: newComment
+        body: newComment.value
       })
     }catch(error){
       console.log(error)
     }
-
-    window.location.reload()
 }
 
 </script>
 
 <template>
-    <div class="w-1/3 bg-white/70 shadow-xl h-24 mt-6 rounded-xl py-2 px-4">
+    <div class="w-1/3 bg-white/70 shadow-xl mt-6 rounded-xl p-4">
         <div class="w-full flex justify-between">
             <p >{{ post?.createdAt }}</p>
             <button class="px-2 hover:bg-green-200 rounded-lg" @click="toggleEditPost = !toggleEditPost">Edit</button>
@@ -72,8 +70,8 @@ async function createComment(){
             <button :disabled="newComment.message.length < 1">Wyślij</button>
           </form>
         </div>
-        <div v-for="comment in post?.comments">
-          <CommentComponent :comment="comment"/>
+        <div class="flex flex-col gap-3 mt-6">
+          <CommentComponent v-for="comment in post?.comments" :comment="comment"/>
         </div>
     </div>
 </template>

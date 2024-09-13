@@ -1,10 +1,10 @@
 <template>
-  <main class="flex flex-col bg-redd-950 gap-8">
+  <main class="flex flex-col bg-redd-100">
     <LayoutHeader />
     <div class="flex">
-      <LayoutChatComponent />
+      <!-- <LayoutChatComponent /> -->
       <slot />
-      <LayoutFriendsComponent />
+      <!-- <LayoutFriendsComponent /> -->
     </div>
   </main>
 </template>

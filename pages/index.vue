@@ -8,7 +8,10 @@ type Post = {
   image?:string;
 };
 
-const postMessage = ref("")
+const newPost = ref({
+  description:"",
+  authorId:"39605908"
+})
 
 const data = ref<Post[] | null>(null)
 
@@ -26,7 +29,7 @@ async function createPost() {
     try{
       const response = await $fetch('http://130.61.148.159:80/post',{
         method:"POST",
-        body: description
+        body: newPost.value
       })
     }catch(error){
       console.log(error)
@@ -36,9 +39,9 @@ async function createPost() {
 
 <template>
   <div class=" min-h-screen flex flex-col items-center w-full">
-    <form @submit="createPost()" class="mt-24 flex flex-col">
+    <form @submit.prevent="createPost()" class="mt-24 flex flex-col">
       <p>Napisz posta!</p>
-      <textarea class="min-h-24" v-model="postMessage"></textarea>
+      <textarea class="min-h-24" v-model="newPost.description"></textarea>
       <button>Wyślij</button>
     </form>
     POSTS!

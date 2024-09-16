@@ -25,7 +25,6 @@ onMounted(async () => {
 })
 
 async function createPost() {
-    const description = {description:postMessage.value}
     try{
       const response = await $fetch('http://130.61.148.159:80/post',{
         method:"POST",
